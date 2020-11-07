@@ -43,19 +43,34 @@ public class DynamicDataSourceAnnotationInterceptor implements MethodInterceptor
         this.dsProcessor = dsProcessor;
     }
 
+    /**
+     * 这里执行力AOP的逻辑的， 依据AOP 注解来决定 dataSource的key
+     */
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         try {
+            // TODO: 2020/11/6 这个对于我这个方式，这么弄就复杂了很多了，后面试着替换掉
+            // AOP 拦截到这个方法(现在是这个类)，在这个类的某个方法调用之前，将数据源塞进去，调用之后再poll出去
             String dsKey = determineDatasourceKey(invocation);
+            System.out.println("获取到数据源为" + dsKey);
             DynamicDataSourceContextHolder.push(dsKey);
+            System.out.println("开始执行方法:" + invocation.getMethod().getName());
             return invocation.proceed();
         } finally {
+            System.out.println("方法执行完毕:" + invocation.getMethod().getName());
             DynamicDataSourceContextHolder.poll();
         }
     }
 
+    /**
+     * 去缓存中查找这个方法（类） 对应的 db key
+     *
+     * @param invocation
+     */
     private String determineDatasourceKey(MethodInvocation invocation) {
-        String key = dataSourceClassResolver.findDSKey(invocation.getMethod(), invocation.getThis());
-        return (!key.isEmpty() && key.startsWith(DYNAMIC_PREFIX)) ? dsProcessor.determineDatasource(invocation, key) : key;
+
+        // 如果使用的SPEL表达式啥的，转用这个。我不想用
+//        return (!key.isEmpty() && key.startsWith(DYNAMIC_PREFIX)) ? dsProcessor.determineDatasource(invocation, key) : key;
+        return dataSourceClassResolver.findDSKey(invocation.getMethod(), invocation.getThis());
     }
 }

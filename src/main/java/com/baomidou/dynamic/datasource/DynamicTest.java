@@ -14,13 +14,17 @@
  * limitations under the License.
  * <pre/>
  */
-package com.baomidou.dynamic.datasource.annotation;
+package com.baomidou.dynamic.datasource;
+
+import org.springframework.stereotype.Component;
 
 import java.lang.annotation.*;
 
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target({ElementType.TYPE,ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@DS("slave")
-public @interface Slave {
+@Component
+public @interface DynamicTest {
+
+    String value() default "";
 }

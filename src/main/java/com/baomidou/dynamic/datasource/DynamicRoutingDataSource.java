@@ -69,6 +69,10 @@ public class DynamicRoutingDataSource extends AbstractRoutingDataSource implemen
     @Setter
     private Boolean seata = false;
 
+    /**
+     * 决定使用哪个数据源的，然后通过这个获取数据源的connection
+     * @return
+     */
     @Override
     public DataSource determineDataSource() {
         return getDataSource(DynamicDataSourceContextHolder.peek());

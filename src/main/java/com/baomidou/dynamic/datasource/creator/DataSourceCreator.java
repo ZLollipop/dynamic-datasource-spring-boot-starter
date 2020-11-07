@@ -105,6 +105,9 @@ public class DataSourceCreator {
         return wrapDataSource(dataSource, dataSourceProperty);
     }
 
+    /**
+     * 加载数据源时候，自动运行的一些sql脚本
+     */
     private void runScrip(DataSource dataSource, DataSourceProperty dataSourceProperty) {
         String schema = dataSourceProperty.getSchema();
         String data = dataSourceProperty.getData();
@@ -119,6 +122,9 @@ public class DataSourceCreator {
         }
     }
 
+    /**
+     * 我暂时就不wrap了
+     */
     private DataSource wrapDataSource(DataSource dataSource, DataSourceProperty dataSourceProperty) {
         String name = dataSourceProperty.getPoolName();
         DataSource targetDataSource = dataSource;

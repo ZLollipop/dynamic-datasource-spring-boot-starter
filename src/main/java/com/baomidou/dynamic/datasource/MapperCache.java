@@ -14,13 +14,11 @@
  * limitations under the License.
  * <pre/>
  */
-package com.baomidou.dynamic.datasource.annotation;
+package com.baomidou.dynamic.datasource;
 
-import java.lang.annotation.*;
-
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@DS("master")
-public @interface Master {
+/**
+ * @author zhaohaoren
+ */
+public class MapperCache {
+    Class<?> entityClass = null;
 }

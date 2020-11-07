@@ -97,7 +97,7 @@ public class DynamicDataSourceProperties {
     private HikariCpConfig hikari = new HikariCpConfig();
 
     /**
-     * 全局默认publicKey
+     * 全局默认publicKey  这个是啥
      */
     private String publicKey = CryptoUtils.DEFAULT_PUBLIC_KEY_STRING;
     /**
