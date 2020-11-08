@@ -52,12 +52,9 @@ public class DynamicDataSourceAnnotationInterceptor implements MethodInterceptor
             // TODO: 2020/11/6 这个对于我这个方式，这么弄就复杂了很多了，后面试着替换掉
             // AOP 拦截到这个方法(现在是这个类)，在这个类的某个方法调用之前，将数据源塞进去，调用之后再poll出去
             String dsKey = determineDatasourceKey(invocation);
-            System.out.println("获取到数据源为" + dsKey);
             DynamicDataSourceContextHolder.push(dsKey);
-            System.out.println("开始执行方法:" + invocation.getMethod().getName());
             return invocation.proceed();
         } finally {
-            System.out.println("方法执行完毕:" + invocation.getMethod().getName());
             DynamicDataSourceContextHolder.poll();
         }
     }

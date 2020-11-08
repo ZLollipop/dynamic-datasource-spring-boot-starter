@@ -91,6 +91,7 @@ public class DataSourceClassResolver {
             return "";
         }
         String cacheKey = method.getDeclaringClass().getName();
+        // TODO: 2020/11/8 优化或者修正这里
         if (method.getDeclaringClass().equals(BaseMapper.class) || method.getDeclaringClass().equals(MyBaseMapper.class)) {
             // 是走的父类的方法，需要获取到实际的子类
             Class<?>[] interfaces = targetObject.getClass().getInterfaces();

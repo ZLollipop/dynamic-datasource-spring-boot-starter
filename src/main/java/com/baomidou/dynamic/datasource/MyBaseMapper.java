@@ -58,6 +58,7 @@ import java.util.stream.Collectors;
  * 必须让子类来决定 这里面的方法应该是用哪个数据源
  * <p>
  * todo BaseMapper 的sql是如何执行的，mp是怎么整合的
+ * todo 添加结果转Map的方法
  *
  * @param <T>
  * @author zhaohaoren
@@ -373,6 +374,7 @@ public interface MyBaseMapper<T> extends BaseMapper<T> {
         });
     }
 
+    // TODO: 2020/11/8 这些需要想办法对外部private
     @Deprecated
     default boolean executeBatch(Consumer<SqlSession> consumer) {
         SqlSessionFactory sqlSessionFactory = SqlHelper.sqlSessionFactory(entityClass());
