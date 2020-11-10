@@ -19,6 +19,7 @@ package com.baomidou.dynamic.datasource.spring.boot.autoconfigure;
 import com.baomidou.dynamic.datasource.DynamicRoutingDataSource;
 import com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationAdvisor;
 import com.baomidou.dynamic.datasource.aop.DynamicDataSourceAnnotationInterceptor;
+import com.baomidou.dynamic.datasource.mapper.MySqlInjector;
 import com.baomidou.dynamic.datasource.processor.DsHeaderProcessor;
 import com.baomidou.dynamic.datasource.processor.DsProcessor;
 import com.baomidou.dynamic.datasource.processor.DsSessionProcessor;
@@ -102,6 +103,13 @@ public class DynamicDataSourceAutoConfiguration {
         headerProcessor.setNextProcessor(sessionProcessor);
         sessionProcessor.setNextProcessor(spelExpressionProcessor);
         return headerProcessor;
+    }
+
+
+    // TODO: 2020/11/10 这个配置提出去 不要放在数据源这里
+    @Bean
+    public MySqlInjector myLogicSqlInjector() {
+        return new MySqlInjector();
     }
 
 }

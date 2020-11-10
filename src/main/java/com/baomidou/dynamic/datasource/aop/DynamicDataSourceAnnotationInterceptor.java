@@ -49,7 +49,6 @@ public class DynamicDataSourceAnnotationInterceptor implements MethodInterceptor
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         try {
-            // TODO: 2020/11/6 这个对于我这个方式，这么弄就复杂了很多了，后面试着替换掉
             // AOP 拦截到这个方法(现在是这个类)，在这个类的某个方法调用之前，将数据源塞进去，调用之后再poll出去
             String dsKey = determineDatasourceKey(invocation);
             DynamicDataSourceContextHolder.push(dsKey);

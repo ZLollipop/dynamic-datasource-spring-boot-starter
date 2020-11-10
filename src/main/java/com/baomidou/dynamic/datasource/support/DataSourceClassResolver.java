@@ -16,7 +16,7 @@
  */
 package com.baomidou.dynamic.datasource.support;
 
-import com.baomidou.dynamic.datasource.MyBaseMapper;
+import com.baomidou.dynamic.datasource.mapper.MyBaseMapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;

@@ -14,11 +14,10 @@
  * limitations under the License.
  * <pre/>
  */
-package com.baomidou.dynamic.datasource;
+package com.baomidou.dynamic.datasource.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.enums.SqlMethod;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.metadata.TableInfo;
 import com.baomidou.mybatisplus.core.metadata.TableInfoHelper;
@@ -64,9 +63,10 @@ import java.util.stream.Collectors;
  * @author zhaohaoren
  */
 @Repository
-public interface MyBaseMapper<T> extends BaseMapper<T> {
+@Deprecated
+public interface BaseMapper<T> extends com.baomidou.mybatisplus.core.mapper.BaseMapper<T> {
 
-    Log log = LogFactory.getLog(MyBaseMapper.class);
+    Log log = LogFactory.getLog(BaseMapper.class);
 
     /**
      * 默认批次提交数量
