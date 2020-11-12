@@ -3,9 +3,15 @@ package com.baomidou.dynamic.datasource.enums;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+
+/**
+ * @see com.baomidou.mybatisplus.core.enums.SqlMethod
+ * @author zhaohaoren
+ */
+
 @Getter
 @AllArgsConstructor
-public enum EnhanceMethodSql {
+public enum EnhanceMethodSql{
 
     /**
      * 批量插入
@@ -13,7 +19,13 @@ public enum EnhanceMethodSql {
     SAVE_BATCH("saveBatch", "批量插入", "<script>\nINSERT INTO %s %s VALUES %s\n</script>");
 
 
+
+
+
     private final String method;
     private final String desc;
     private final String sql;
+
+
+
 }
