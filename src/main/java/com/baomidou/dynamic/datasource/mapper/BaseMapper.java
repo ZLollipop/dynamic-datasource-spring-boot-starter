@@ -73,7 +73,7 @@ public interface BaseMapper<T> extends com.baomidou.mybatisplus.core.mapper.Base
      */
     int DEFAULT_BATCH_SIZE = 1000;
 
-    //region 增
+    //region 增 OK
     default boolean save(T entity) {
         return SqlHelper.retBool(insert(entity));
     }
